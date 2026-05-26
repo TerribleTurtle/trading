@@ -6,14 +6,14 @@ from src.shadow_bot.core.models import Market
 from src.shadow_bot.core.ports import MarketDataPort
 
 class KalshiAdapter(MarketDataPort):
-    def __init__(self, base_url: str = "https://trading-api.kalshi.com/trade-api/v2"):
+    def __init__(self, base_url: str = "https://api.elections.kalshi.com/trade-api/v2"):
         self.base_url = base_url
         # In a real setup, we would add auth headers here.
         
     @retry(stop=stop_after_attempt(3), wait=wait_exponential(multiplier=1, min=2, max=10))
     def _fetch_page(self, cursor: str = None) -> dict:
         with httpx.Client() as client:
-            params = {"status": "active", "limit": 100}
+            params = {"status": "open", "limit": 100}
             if cursor:
                 params["cursor"] = cursor
                 
