@@ -9,6 +9,11 @@ from alembic import context
 # access to the values within the .ini file in use.
 config = context.config
 
+import os
+db_path = os.getenv("DB_PATH", "shadow_bot.db")
+database_url = f"sqlite:///{db_path}"
+config.set_main_option("sqlalchemy.url", database_url)
+
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
 if config.config_file_name is not None:
