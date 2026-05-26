@@ -1,0 +1,25 @@
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# IDEs
+.vscode/
+.idea/
+
+# Database
+data/
+*.sqlite
+*.db
+
+# Tooling
+.pytest_cache/
+.ruff_cache/
+.venv/
+env/
+venv/
