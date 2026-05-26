@@ -23,7 +23,7 @@ COPY alembic/ ./alembic/
 COPY alembic.ini ./
 
 # Run migrations and start the bot
-RUN groupadd -r appuser && useradd -r -g appuser appuser
-RUN mkdir -p /data && chown -R appuser:appuser /app /data
+RUN groupadd -r appuser && useradd -r -m -g appuser appuser
+RUN mkdir -p /data && chown -R appuser:appuser /app /data /home/appuser
 USER appuser
 CMD ["sh", "-c", "uv run alembic upgrade head && uv run python -m src.shadow_bot.main run"]
